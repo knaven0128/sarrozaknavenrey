@@ -11,6 +11,36 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-159411627-1');
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const imageDialog = document.getElementById("imageDialog");
+            const largeImage = document.getElementById("largeImage");
+            const closeDialog = document.getElementById("closeDialog");
+
+            // Get all images with class 'work-card-hero-img'
+            document.querySelectorAll(".work-card-hero-img").forEach(img => {
+                img.addEventListener("click", function () {
+                    largeImage.src = this.src; // Set the clicked image as the large image
+                    imageDialog.showModal();
+                });
+            });
+
+            // Close the dialog when clicking the close button
+            closeDialog.addEventListener("click", () => {
+                imageDialog.close();
+            });
+
+            // Close the dialog when clicking outside the image
+            imageDialog.addEventListener("click", (event) => {
+                if (event.target === imageDialog) {
+                    imageDialog.close();
+                }
+            });
+
+            largeImage.addEventListener("click", () => {
+                imageDialog.close();
+            });
+        });
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -53,14 +83,21 @@
                 <h1 class="hero-tag contact-hero  fadeInLeft">My Work</h1>
             </div>
         </div>
+
+        <dialog id="imageDialog">
+            <button class="close-btn" id="closeDialog"></button>
+            <div class="dialog-content">
+                <img id="largeImage" src="" alt="Large View">
+            </div>
+        </dialog>
+
         <!--Content-->
         <div class="animated bounceInUp delay-1s">
             <div class="row work-double-row">
                 <div class="col-md-6 col-sm-12  bounceInLeft delay-3s">
 
                     <div class="work-hero-card">
-
-                        <img class="work-card-hero-img" src="assets/img/work/fncjewelry/fncjewelry.png">
+                        <img id="fncjewelry" class="work-card-hero-img" src="assets/img/work/fncjewelry/fncjewelry.png">
                         <h1>F&C JEWELRY INC</h1>
                         <h2>WordPress | Php | Html | CSS | JavaScript | Custom Plugins | Customize Template</h2>
                         <div id="work-text">WEBSITE</div>
