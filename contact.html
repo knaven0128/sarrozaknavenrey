@@ -120,22 +120,48 @@
         </div>
     </div>
     <script>
-        document.getElementById('emailForm').addEventListener('submit', function(event) {
+        document.getElementById('emailForm').addEventListener('submit', function (event) {
             event.preventDefault();
-
-            fetch(this.action, {
+    
+            const form = this;
+            const thankYouMessage = document.getElementById('thankyou_message');
+            const submitButton = form.querySelector('button[type="submit"]');
+    
+            // Disable button while sending
+            submitButton.disabled = true;
+            submitButton.innerText = "Sending...";
+    
+            fetch(form.action, {
                 method: 'POST',
-                body: new FormData(this)
-            }).then(function(response) {
+                body: new FormData(form)
+            })
+            .then(function (response) {
                 if (response.ok) {
-                    // Redirect to the specified URL after a brief delay
-                    setTimeout(function() {
+    
+                    // Show success message
+                    thankYouMessage.style.display = "block";
+    
+                    // Reset form
+                    form.reset();
+    
+                    // Change button text
+                    submitButton.innerText = "Message Sent ✓";
+    
+                    // Optional: Redirect after 3 seconds
+                    setTimeout(function () {
                         window.location.href = 'https://knaven0128.github.io/sarrozaknavenrey/';
-                    }, 1000); // Adjust the delay time as needed
+                    }, 3000);
+    
                 } else {
-                    console.error('Error sending email.');
+                    alert("Something went wrong. Please try again.");
+                    submitButton.disabled = false;
+                    submitButton.innerText = "Send Message";
                 }
-            }).catch(function(error) {
+            })
+            .catch(function (error) {
+                alert("Error sending message. Please check your connection.");
+                submitButton.disabled = false;
+                submitButton.innerText = "Send Message";
                 console.error('Error:', error);
             });
         });
