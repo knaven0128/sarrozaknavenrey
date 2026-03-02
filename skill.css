@@ -255,3 +255,59 @@
   .progress-line.percent100 span::after {
     content: "100%";
   }
+
+  /* Skill Group Container */
+.skill-groups {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* Each Skill Group */
+.skill-group {
+  flex: 1 1 280px;
+  background: #fff;
+  padding: 20px;
+  margin: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Group Heading */
+.skill-group h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.skill-group-icon {
+  font-size: 28px;
+  color: #6665ee;
+  margin-right: 10px;
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  .skill-groups {
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+  }
+  .skill-group {
+    flex: 1 1 100%;
+    padding: 15px;
+  }
+  .skill-group h3 {
+    font-size: 20px;
+  }
+  .skill-group-icon {
+    font-size: 24px;
+  }
+}

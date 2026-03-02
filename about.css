@@ -1,67 +1,135 @@
+/* ===== Modernized About Section ===== */
 
 .container-about {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
     display: flex;
     flex-wrap: wrap;
+    gap: 40px;
+    transition: all 0.3s ease;
 }
 
+/* Columns */
 .column-about {
-    flex: 1;
-    padding: 0 20px;
+    flex: 1 1 500px;
+    padding: 0 10px;
 }
 
+/* Section Titles */
 .column-about h2 {
-    font-weight: bold;
-    font-size: 24px;
-    margin: 0;
-    padding-bottom: 20px;
-    color: #333;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: #111;
+    position: relative;
+    padding-bottom: 10px;
 }
 
-.info strong {
-    font-weight: bold;
+.column-about h2::after {
+    content: "";
+    width: 50px;
+    height: 3px;
+    background: #007bff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-radius: 4px;
+}
+
+/* Info Text */
+.info {
+    line-height: 1.8;
     color: #555;
 }
 
-.info {
-    text-indent: 30px;
-    line-height: 1.6;
-    color: #777;
+.info strong {
+    font-weight: 600;
+    color: #000;
 }
 
+/* School Timeline */
 .school {
-    margin-top: 20px;
-    padding-left: 30px;
-    border-left: 2px solid #646262;
+    margin-top: 25px;
+    padding-left: 20px;
+    border-left: 3px solid #007bff;
+    position: relative;
+}
+
+.school::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: #007bff;
+    border-radius: 50%;
 }
 
 .school h3 {
-    font-size: 20px;
-    color: #010202;
-    margin-top: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 5px;
 }
 
-@media (max-width: 768px) {
+/* ===== Responsive ===== */
 
-    .info{
-        text-indent: 0;
+/* Tablet */
+@media (max-width: 992px) {
+    .container-about {
+        padding: 30px;
+        gap: 30px;
     }
 
     .column-about {
-        text-align: start;
-        margin-top: 10%;
-        flex-direction: column;
+        flex: 1 1 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .container-about {
+        padding: 20px;
+        margin: 40px 15px;
+        border-radius: 10px;
+    }
+
+    .column-about {
         padding: 0;
     }
 
+    .column-about h2 {
+        font-size: 18px;
+    }
+
+    .info {
+        font-size: 14px;
+    }
+
     .school {
-      
-        padding-left: 0;
-        border-left: none;
+        padding-left: 15px;
+        border-left: 2px solid #007bff;
+    }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+    .container-about {
+        padding: 15px;
+    }
+
+    .column-about h2 {
+        font-size: 16px;
+    }
+
+    .info {
+        font-size: 13px;
+        line-height: 1.6;
     }
 }
